@@ -44,7 +44,7 @@ $Configs = [ordered]@{
 }
 foreach ($f in 'komorebi.json',
                'komorebi.bar.monitor0.json', 'komorebi.bar.monitor1.json', 'komorebi.bar.monitor2.json', 'komorebi.bar.monitor3.json',
-               'komorebi.my-rules.json', 'komorebi.learn.ps1', 'komorebi-start.ps1') {
+               'komorebi.my-rules.json') {
     $Configs["komorebi\$f"] = "$HOME\$f"
 }
 
@@ -144,19 +144,13 @@ function Step-Komorebi {
         Write-Note 'community app rules updated   ~\applications.json'
     }
 
-    # Start komorebi, whkd, masir and the bar at login through the fast launcher.
-    $lnk = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\komorebi.lnk"
-    $s = (New-Object -ComObject WScript.Shell).CreateShortcut($lnk)
-    $s.TargetPath = Get-Pwsh
-    $s.Arguments = "-NoProfile -WindowStyle Hidden -File `"$HOME\komorebi-start.ps1`""
-    $s.WindowStyle = 7
-    $s.Save()
-    Write-Note "starts at login   $lnk"
+    # komorebi's own startup shortcut starts komorebi, whkd, masir and the bars at login.
+    komorebic enable-autostart --whkd --bar --masir | Out-Null
+    Write-Note 'starts at login   shell:startup\komorebi.lnk'
 
     if (Get-Process komorebi -ErrorAction SilentlyContinue) { Write-Note 'komorebi already running' }
     else {
-        # The launcher keeps running to start bars for screens plugged in later, so don't wait for it.
-        Start-Process (Get-Pwsh) -ArgumentList '-NoProfile', '-WindowStyle', 'Hidden', '-File', "`"$HOME\komorebi-start.ps1`"" -WindowStyle Hidden
+        komorebic start --whkd --bar --masir | Out-Null
         Write-Note 'komorebi started'
     }
 }

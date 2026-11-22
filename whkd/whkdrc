@@ -18,11 +18,7 @@ alt + shift + escape    : start "" taskmgr.exe
 
 alt + q                 : komorebic close
 alt + m                 : komorebic minimize
-alt + shift + b         : taskkill /f /im komorebi-bar.exe >nul 2>&1 & pwsh -NoProfile -WindowStyle Hidden -File "{{HOME}}\komorebi-start.ps1" -BarsOnly
-
-# Teach komorebi about the focused window: float it from now on / leave it alone from now on
-alt + ctrl + t          : pwsh -NoProfile -WindowStyle Hidden -File "{{HOME}}\komorebi.learn.ps1" float
-alt + ctrl + i          : pwsh -NoProfile -WindowStyle Hidden -File "{{HOME}}\komorebi.learn.ps1" ignore
+alt + shift + b         : taskkill /f /im komorebi-bar.exe >nul 2>&1 & komorebic start --bar
 
 # Focus windows
 alt + h                 : komorebic focus left

@@ -31,7 +31,7 @@
 </tr>
 <tr>
 <td>🖱️ <b>Focus follows mouse</b><br>masir focuses the window under the cursor, but only windows komorebi manages</td>
-<td>🚀 <b>Ready ~1 s after login</b><br>one launcher starts komorebi, whkd, masir and the bar together</td>
+<td>🚀 <b>Starts at login</b><br>komorebi's own autostart runs komorebi, whkd, masir and the bars, no scripts</td>
 </tr>
 <tr>
 <td>🐚 <b>Shell</b><br>PowerShell 7 with starship, zoxide, fzf, eza, bat and git shortcuts</td>
@@ -87,7 +87,7 @@ Windows setup - pick what to set up:
 | 2 | 🐚 **Shell** | PowerShell 7 profile and the starship prompt |
 | 3 | 🖥️ **WezTerm** | `~\.wezterm.lua` |
 | 4 | 📝 **Neovim** | Clones [nvim-config](https://github.com/bewithsnehasish/nvim-config) (`windows` branch) into `%LOCALAPPDATA%\nvim` |
-| 5 | 🪟 **komorebi** | Layouts, bar, window rules, whkd hotkeys, masir, and the login launcher |
+| 5 | 🪟 **komorebi** | Layouts, bar, window rules, whkd hotkeys, masir, and autostart at login |
 | 6 | 🐑 **Herdr** | Herdr config |
 | 7 | 🤖 **Claude Code** | Installs the CLI, then settings, status line and hooks |
 | 8 | 🔑 **Git + SSH** | `.gitconfig` and SSH host aliases: `github.com` = work, `github-pr` = personal. Keys are never stored here |
@@ -110,28 +110,28 @@ flowchart LR
     fix --> done
 ```
 
-**At login**, one launcher starts everything at once. The bars wait only until komorebi answers, and only screens that are plugged in get one. The launcher then stays in the background and adds a screen's bar when you dock:
+**At login**, komorebi's own startup shortcut runs `komorebic start --whkd --bar --masir`. There are no scripts. If you dock after logging in, press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>B</kbd> to give the new screen its bar:
 
 ```mermaid
 flowchart LR
-    login(["🔓 Windows login"]) --> lnk["Startup shortcut"] --> start["komorebi-start.ps1"]
+    login(["🔓 Windows login"]) --> lnk["komorebi.lnk"] --> start["komorebic start"]
     start --> k["🪟 komorebi"]
     start --> w["⌨️ whkd"]
     start --> m["🖱️ masir"]
-    k -- "ready" --> bar["📊 a bar per connected screen"]
-    dock(["🔌 screen plugged in"]) -.-> start
+    k --> bar["📊 the bars"]
+    dock(["🔌 screen plugged in"]) -. "Alt Shift B" .-> bar
 ```
 
 **One config for every desk.** `komorebi.json` knows each screen by its serial number, so docking needs no switching:
 
 | Screen | Workspaces |
 |---|---|
-| 💻 Laptop panel | 7 · 8 · 9 when docked, **all 1 – 9 on its own** |
-| 🏠 Home Lenovo L24 | 1 – 6 |
-| 🏢 Office Samsung #1 / #2 | 1 – 3 / 4 – 6 |
+| 💻 Laptop panel | 6 – 9 when docked, **all 1 – 9 on its own** |
+| 🏠 Home Lenovo L24 | 1 – 5 |
+| 🏢 Office Samsung #1 / #2 | 1 – 3 / 4 – 5 |
 | 📽️ Any other screen (projector, hotel TV) | one plain tiled workspace, no setup |
 
-The laptop is listed last, so when docked the bigger screen wins workspaces 1 – 6; undocked, the laptop's own 1 – 6 take over. Unplug a screen and komorebi keeps its layout; plug it back in and its windows return.
+The laptop is listed last, so when docked the bigger screen wins workspaces 1 – 5; undocked, the laptop's own 1 – 5 take over. Unplug a screen and komorebi keeps its layout; plug it back in and its windows return. Windows you opened on the laptop's 1 – 5 while undocked stay on the laptop after docking: click that workspace on the laptop's bar and send each window over with <kbd>Alt</kbd> <kbd>Shift</kbd> + its number.
 
 <a id="hotkeys"></a>
 
@@ -175,13 +175,11 @@ The laptop is listed last, so when docked the bigger screen wins workspaces 1 �
 | <kbd>Alt</kbd> <kbd>E</kbd> | Explorer |
 | <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>Esc</kbd> | Task Manager |
 
-#### 🧠 Teach komorebi & reload
+#### 🔁 Reload
 
 | Keys | Action |
 |---|---|
-| <kbd>Alt</kbd> <kbd>Ctrl</kbd> <kbd>T</kbd> | Always **float** windows like this one |
-| <kbd>Alt</kbd> <kbd>Ctrl</kbd> <kbd>I</kbd> | Always **ignore** windows like this one (popups, PiP, call bars) |
-| <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>B</kbd> | Restart the bars |
+| <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>B</kbd> | Restart the bars (after docking) |
 | <kbd>Alt</kbd> <kbd>O</kbd> | Reload whkd |
 | <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>O</kbd> | Reload komorebi config |
 
@@ -227,7 +225,7 @@ To add a new config, add one line to the `$Configs` list at the top of `setup.ps
 ## 💡 Good to know
 
 > [!NOTE]
-> **Window rules** live in `komorebi/komorebi.my-rules.json`, loaded on top of the community `applications.json`. <kbd>Alt</kbd> <kbd>Ctrl</kbd> <kbd>T</kbd> / <kbd>I</kbd> add to it. If a window's title changes every time, edit its rule to `"matching_strategy": "Contains"`.
+> **Window rules** live in `komorebi/komorebi.my-rules.json`, loaded on top of the community `applications.json`. Add a rule by hand, then press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>O</kbd>. If a window's title changes every time, use `"matching_strategy": "Contains"`.
 
 > [!IMPORTANT]
 > **Screen IDs** in `komorebi.json` (`display_index_preferences`) belong to this laptop's screens. To pin a new everyday screen (or on another laptop), run `komorebic monitor-information`, add its `serial_number_id` (the `device_id` for a built-in panel) with a `workspaces` block in the same position, and copy a `komorebi.bar.monitorN.json` with the next index. In Windows **Settings → System → Display → Multiple displays**, turn off *Remember window locations* and turn on *Minimize windows when a monitor is disconnected*.
@@ -245,7 +243,7 @@ To add a new config, add one line to the `$Configs` list at the top of `setup.ps
 <details>
 <summary><b>komorebi isn't running after login</b></summary>
 
-Run `~\komorebi-start.ps1`. If that works, check that `komorebi.lnk` exists in `shell:startup` (re-run step 5 to recreate it).
+Run `komorebic start --whkd --bar --masir`. If that works, check that `komorebi.lnk` exists in `shell:startup` (re-run step 5 to recreate it).
 </details>
 
 <details>
