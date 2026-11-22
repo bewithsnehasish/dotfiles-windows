@@ -34,13 +34,6 @@
   "monitors": [
     {
       "workspaces": [
-        { "name": "7", "layout": "VerticalStack" },
-        { "name": "8", "layout": "VerticalStack" },
-        { "name": "9", "layout": "VerticalStack" }
-      ]
-    },
-    {
-      "workspaces": [
         { "name": "1", "layout": "VerticalStack" },
         { "name": "2", "layout": "VerticalStack" },
         { "name": "3", "layout": "VerticalStack" },
@@ -62,6 +55,19 @@
         { "name": "5", "layout": "VerticalStack" },
         { "name": "6", "layout": "VerticalStack" }
       ]
+    },
+    {
+      "workspaces": [
+        { "name": "7", "layout": "VerticalStack" },
+        { "name": "8", "layout": "VerticalStack" },
+        { "name": "9", "layout": "VerticalStack" },
+        { "name": "1", "layout": "VerticalStack" },
+        { "name": "2", "layout": "VerticalStack" },
+        { "name": "3", "layout": "VerticalStack" },
+        { "name": "4", "layout": "VerticalStack" },
+        { "name": "5", "layout": "VerticalStack" },
+        { "name": "6", "layout": "VerticalStack" }
+      ]
     }
   ],
   "bar_configurations": [
@@ -76,10 +82,10 @@
   "transparency": false,
   "transparency_alpha": 235,
   "display_index_preferences": {
-    "0": "LEN915E-4&2fc728c1&0&UID8388688",
-    "1": "UMHT496R",
-    "2": "H4ZT600143",
-    "3": "H4ZT600199"
+    "0": "UMHT496R",
+    "1": "H4ZT600143",
+    "2": "H4ZT600199",
+    "3": "LEN915E-4&2fc728c1&0&UID8388688"
   },
   "transparency_ignore_rules": [
     {

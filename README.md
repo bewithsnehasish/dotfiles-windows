@@ -126,12 +126,12 @@ flowchart LR
 
 | Screen | Workspaces |
 |---|---|
-| 💻 Laptop panel | 7 · 8 · 9 (always there) |
+| 💻 Laptop panel | 7 · 8 · 9 when docked, **all 1 – 9 on its own** |
 | 🏠 Home Lenovo L24 | 1 – 6 |
 | 🏢 Office Samsung #1 / #2 | 1 – 3 / 4 – 6 |
 | 📽️ Any other screen (projector, hotel TV) | one plain tiled workspace, no setup |
 
-Unplug a screen and komorebi keeps its windows and layout; plug it back in and they return.
+The laptop is listed last, so when docked the bigger screen wins workspaces 1 – 6; undocked, the laptop's own 1 – 6 take over. Unplug a screen and komorebi keeps its layout; plug it back in and its windows return.
 
 <a id="hotkeys"></a>
 
