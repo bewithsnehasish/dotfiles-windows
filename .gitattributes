@@ -1,0 +1,2 @@
+# Store every file exactly as-is so configs round-trip byte for byte.
+* -text
