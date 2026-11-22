@@ -1,0 +1,30 @@
+{
+  "Picture-in-picture (Chromium browsers)": {
+    "ignore": [
+      [
+        { "kind": "Exe", "id": "chrome.exe", "matching_strategy": "Equals" },
+        { "kind": "Title", "id": "Picture in picture", "matching_strategy": "Contains" }
+      ],
+      [
+        { "kind": "Exe", "id": "Ardia.exe", "matching_strategy": "Equals" },
+        { "kind": "Title", "id": "Picture in picture", "matching_strategy": "Contains" }
+      ],
+      [
+        { "kind": "Exe", "id": "msedge.exe", "matching_strategy": "Equals" },
+        { "kind": "Title", "id": "Picture in picture", "matching_strategy": "Contains" }
+      ]
+    ]
+  },
+  "Slack huddle": {
+    "floating": [
+      [
+        { "kind": "Exe", "id": "slack.exe", "matching_strategy": "Equals" },
+        { "kind": "Title", "id": "Huddle", "matching_strategy": "Contains" }
+      ],
+      [
+        { "kind": "Exe", "id": "slack.exe", "matching_strategy": "Equals" },
+        { "kind": "Title", "id": "huddle", "matching_strategy": "Contains" }
+      ]
+    ]
+  }
+}

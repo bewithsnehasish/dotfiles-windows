@@ -1,0 +1,71 @@
+onboarding = false
+
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[theme.custom]
+sidebar_bg = "#181825"
+panel_bg = "#1e1e2e"
+active_row_bg = "#313244"
+selection_bg = "#45475a"
+surface0 = "#313244"
+surface1 = "#45475a"
+surface_dim = "#11111b"
+accent = "#89b4fa"
+overlay0 = "#a6adc8"
+overlay1 = "#bac2de"
+
+[ui]
+sidebar_width = 30
+mouse_capture = true
+pane_borders = "off"
+pane_outer_borders = false
+window_title = "{workspace}: {tab}"
+status_indicators = "symbols"
+
+[ui.toast]
+delivery = "system"
+delay_seconds = 1
+
+[keys]
+# prefix = "ctrl+b"
+prefix = "backtick"
+
+focus_pane_left = ["prefix+h", "ctrl+alt+h"]
+focus_pane_down = ["prefix+j", "ctrl+alt+j"]
+focus_pane_up = ["prefix+k", "ctrl+alt+k"]
+focus_pane_right = ["prefix+l", "ctrl+alt+l"]
+
+switch_tab = "ctrl+1..9"
+switch_workspace = "prefix+1..9"
+focus_agent = "prefix+alt+1..9"
+previous_tab = ["prefix+p", "ctrl+alt+["]
+next_tab = ["prefix+n", "ctrl+alt+]"]
+new_tab = ["prefix+c", "ctrl+alt+c"]
+
+split_vertical = ["prefix+v", "ctrl+alt+d"]
+split_horizontal = ["prefix+minus", "ctrl+alt+shift+d"]
+zoom = ["prefix+z", "ctrl+alt+z"]
+navigate_pane_left = "h"
+navigate_pane_down = "j"
+navigate_pane_up = "k"
+navigate_pane_right = "l"
+
+new_worktree = ""
+remove_worktree = ""
+
+[terminal]
+default_shell = "pwsh"
+shell_mode = "auto"
+new_cwd = "follow"
+
+[server]
+headless_cols = 160
+headless_rows = 50
+
+[session]
+resume_agents_on_restore = true
+
+[ui.sound]
+enabled = true

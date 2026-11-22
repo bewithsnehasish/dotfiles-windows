@@ -1,0 +1,5 @@
+# winget id              command that shows it's already installed
+Microsoft.PowerShell     pwsh
+wez.wezterm              wezterm
+OpenJS.NodeJS.22         node
+LGUG2Z.masir             masir

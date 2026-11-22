@@ -1,0 +1,208 @@
+{
+    "buckets":  [
+                    {
+                        "Name":  "main",
+                        "Source":  "https://github.com/ScoopInstaller/Main"
+                    },
+                    {
+                        "Name":  "extras",
+                        "Source":  "https://github.com/ScoopInstaller/Extras"
+                    },
+                    {
+                        "Name":  "nerd-fonts",
+                        "Source":  "https://github.com/matthewjberger/scoop-nerd-fonts"
+                    }
+                ],
+    "apps":  [
+                 {
+                     "Name":  "7zip",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "alacritty",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "bat",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "beekeeper-studio",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "btop",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "bun",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "eza",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "fd",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "fzf",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "gcc",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "gh",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "git",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "helium",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "herdr",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "imageglass",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "JetBrains-Mono",
+                     "Source":  "nerd-fonts",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "JetBrainsMono-NF",
+                     "Source":  "nerd-fonts",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "JetBrainsMono-NF-Mono",
+                     "Source":  "nerd-fonts",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "komorebi",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "lazygit",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "localsend",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "Maple-Mono-NF",
+                     "Source":  "nerd-fonts",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "mpv",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "neovim",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "ngrok",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "obsidian",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "obs-studio",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "pipx",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "python",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "ripgrep",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "slack",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "starship",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "sudo",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "tealdeer",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "tree-sitter",
+                     "Source":  "main",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "whkd",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "zedis",
+                     "Source":  "extras",
+                     "Info":  ""
+                 },
+                 {
+                     "Name":  "zoxide",
+                     "Source":  "main",
+                     "Info":  ""
+                 }
+             ]
+}

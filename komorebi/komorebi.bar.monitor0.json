@@ -1,0 +1,134 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.41/schema.bar.json",
+  "monitor": {
+    "index": 0
+  },
+  "font_family": "JetBrains Mono",
+  "theme": {
+    "palette": "Catppuccin",
+    "name": "Mocha",
+    "accent": "Blue"
+  },
+  "left_widgets": [
+    {
+      "Komorebi": {
+        "workspaces": {
+          "enable": true,
+          "hide_empty_workspaces": true
+        },
+        "layout": {
+          "enable": true,
+          "display": "Icon",
+          "options": [
+            "VerticalStack",
+            "BSP",
+            "Columns",
+            "Grid",
+            "Monocle"
+          ]
+        },
+        "focused_container": {
+          "enable": true,
+          "display": "IconAndText"
+        },
+        "configuration_switcher": {
+          "enable": true,
+          "configurations": {
+            "1": "{{HOME_FWD}}/komorebi.1screen.json",
+            "H2": "{{HOME_FWD}}/komorebi.home2.json",
+            "O2": "{{HOME_FWD}}/komorebi.office2.json",
+            "O3": "{{HOME_FWD}}/komorebi.office3.json"
+          }
+        }
+      }
+    }
+  ],
+  "right_widgets": [
+    {
+      "Update": {
+        "enable": true
+      }
+    },
+    {
+      "Media": {
+        "enable": true
+      }
+    },
+    {
+      "Cpu": {
+        "enable": true,
+        "auto_select_over": 80
+      }
+    },
+    {
+      "Memory": {
+        "enable": true,
+        "auto_select_over": 80
+      }
+    },
+    {
+      "Date": {
+        "enable": true,
+        "format": {
+          "Custom": "%a %d %b"
+        }
+      }
+    },
+    {
+      "Time": {
+        "enable": true,
+        "format": "TwentyFourHour"
+      }
+    },
+    {
+      "Battery": {
+        "enable": true,
+        "auto_select_under": 20,
+        "hide_on_full_charge": true
+      }
+    }
+  ],
+  "mouse": {
+    "on_scroll_up": {
+      "message": {
+        "type": "CycleFocusWorkspace",
+        "content": "Previous"
+      }
+    },
+    "on_scroll_down": {
+      "message": {
+        "type": "CycleFocusWorkspace",
+        "content": "Next"
+      }
+    }
+  },
+  "height": 34,
+  "max_label_width": 250,
+  "center_widgets": [
+    {
+      "Applications": {
+        "enable": true,
+        "display": "Icon",
+        "items": [
+          {
+            "name": "WezTerm",
+            "command": "C:\\Program Files\\WezTerm\\wezterm-gui.exe"
+          },
+          {
+            "name": "Helium",
+            "command": "{{HOME_JSON}}\\scoop\\shims\\helium.exe",
+            "icon": "{{HOME_JSON}}\\.config\\komorebi-icons\\helium.png"
+          },
+          {
+            "name": "File Explorer",
+            "command": "C:\\Windows\\explorer.exe"
+          },
+          {
+            "name": "Slack",
+            "command": "{{HOME_JSON}}\\scoop\\apps\\slack\\current\\Slack.exe"
+          }
+        ]
+      }
+    }
+  ]
+}

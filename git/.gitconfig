@@ -1,0 +1,4 @@
+[core]
+	longpaths = true
+[credential "helperselector"]
+	selected = manager
