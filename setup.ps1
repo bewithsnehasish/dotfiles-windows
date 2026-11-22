@@ -42,8 +42,8 @@ $Configs = [ordered]@{
     'git\.gitconfig'                              = "$HOME\.gitconfig"
     'git\ssh-config'                              = "$HOME\.ssh\config"
 }
-foreach ($f in 'komorebi.json', 'komorebi.home2.json', 'komorebi.office2.json', 'komorebi.office3.json', 'komorebi.1screen.json',
-               'komorebi.bar.monitor0.json', 'komorebi.bar.monitor1.json', 'komorebi.bar.monitor2.json',
+foreach ($f in 'komorebi.json',
+               'komorebi.bar.monitor0.json', 'komorebi.bar.monitor1.json', 'komorebi.bar.monitor2.json', 'komorebi.bar.monitor3.json',
                'komorebi.my-rules.json', 'komorebi.learn.ps1', 'komorebi-start.ps1') {
     $Configs["komorebi\$f"] = "$HOME\$f"
 }
@@ -154,7 +154,11 @@ function Step-Komorebi {
     Write-Note "starts at login   $lnk"
 
     if (Get-Process komorebi -ErrorAction SilentlyContinue) { Write-Note 'komorebi already running' }
-    else { & (Get-Pwsh) -NoProfile -File "$HOME\komorebi-start.ps1"; Write-Note 'komorebi started' }
+    else {
+        # The launcher keeps running to start bars for screens plugged in later, so don't wait for it.
+        Start-Process (Get-Pwsh) -ArgumentList '-NoProfile', '-WindowStyle', 'Hidden', '-File', "`"$HOME\komorebi-start.ps1`"" -WindowStyle Hidden
+        Write-Note 'komorebi started'
+    }
 }
 
 function Step-Herdr { Install-Configs 'herdr\' }

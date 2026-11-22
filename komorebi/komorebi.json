@@ -34,53 +34,41 @@
   "monitors": [
     {
       "workspaces": [
-        {
-          "name": "1",
-          "layout": "VerticalStack"
-        },
-        {
-          "name": "2",
-          "layout": "VerticalStack"
-        },
-        {
-          "name": "3",
-          "layout": "VerticalStack"
-        },
-        {
-          "name": "4",
-          "layout": "VerticalStack"
-        },
-        {
-          "name": "5",
-          "layout": "VerticalStack"
-        }
+        { "name": "7", "layout": "VerticalStack" },
+        { "name": "8", "layout": "VerticalStack" },
+        { "name": "9", "layout": "VerticalStack" }
       ]
     },
     {
       "workspaces": [
-        {
-          "name": "6",
-          "layout": "VerticalStack"
-        },
-        {
-          "name": "7",
-          "layout": "VerticalStack"
-        },
-        {
-          "name": "8",
-          "layout": "VerticalStack"
-        },
-        {
-          "name": "9",
-          "layout": "VerticalStack"
-        }
+        { "name": "1", "layout": "VerticalStack" },
+        { "name": "2", "layout": "VerticalStack" },
+        { "name": "3", "layout": "VerticalStack" },
+        { "name": "4", "layout": "VerticalStack" },
+        { "name": "5", "layout": "VerticalStack" },
+        { "name": "6", "layout": "VerticalStack" }
+      ]
+    },
+    {
+      "workspaces": [
+        { "name": "1", "layout": "VerticalStack" },
+        { "name": "2", "layout": "VerticalStack" },
+        { "name": "3", "layout": "VerticalStack" }
+      ]
+    },
+    {
+      "workspaces": [
+        { "name": "4", "layout": "VerticalStack" },
+        { "name": "5", "layout": "VerticalStack" },
+        { "name": "6", "layout": "VerticalStack" }
       ]
     }
   ],
   "bar_configurations": [
     "$Env:USERPROFILE/komorebi.bar.monitor0.json",
     "$Env:USERPROFILE/komorebi.bar.monitor1.json",
-    "$Env:USERPROFILE/komorebi.bar.monitor2.json"
+    "$Env:USERPROFILE/komorebi.bar.monitor2.json",
+    "$Env:USERPROFILE/komorebi.bar.monitor3.json"
   ],
   "layered_applications": [
     { "kind": "Exe", "id": "claude.exe", "matching_strategy": "Equals" }
@@ -88,7 +76,10 @@
   "transparency": false,
   "transparency_alpha": 235,
   "display_index_preferences": {
-    "1": "LEN915E-4&2fc728c1&0&UID8388688"
+    "0": "LEN915E-4&2fc728c1&0&UID8388688",
+    "1": "UMHT496R",
+    "2": "H4ZT600143",
+    "3": "H4ZT600199"
   },
   "transparency_ignore_rules": [
     {

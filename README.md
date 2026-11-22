@@ -26,7 +26,7 @@
 
 <table>
 <tr>
-<td width="50%">🪟 <b>Tiling desktop</b><br>komorebi layouts per monitor setup, a bar with workspaces, and rules that keep popups, picture-in-picture and call bars out of the tiles</td>
+<td width="50%">🪟 <b>Tiling desktop</b><br>one komorebi config that knows every screen (laptop, home, office) and tiles any new one too, a bar with workspaces, and rules that keep popups, picture-in-picture and call bars out of the tiles</td>
 <td width="50%">⌨️ <b>Instant hotkeys</b><br>whkd runs every hotkey through <code>cmd</code>: ~0.05 s per keypress instead of ~0.5 s</td>
 </tr>
 <tr>
@@ -110,7 +110,7 @@ flowchart LR
     fix --> done
 ```
 
-**At login**, one launcher starts everything at once. The bar waits only until komorebi answers:
+**At login**, one launcher starts everything at once. The bars wait only until komorebi answers, and only screens that are plugged in get one. The launcher then stays in the background and adds a screen's bar when you dock:
 
 ```mermaid
 flowchart LR
@@ -118,8 +118,20 @@ flowchart LR
     start --> k["🪟 komorebi"]
     start --> w["⌨️ whkd"]
     start --> m["🖱️ masir"]
-    k -- "ready" --> bar["📊 komorebi-bar"]
+    k -- "ready" --> bar["📊 a bar per connected screen"]
+    dock(["🔌 screen plugged in"]) -.-> start
 ```
+
+**One config for every desk.** `komorebi.json` knows each screen by its serial number, so docking needs no switching:
+
+| Screen | Workspaces |
+|---|---|
+| 💻 Laptop panel | 7 · 8 · 9 (always there) |
+| 🏠 Home Lenovo L24 | 1 – 6 |
+| 🏢 Office Samsung #1 / #2 | 1 – 3 / 4 – 6 |
+| 📽️ Any other screen (projector, hotel TV) | one plain tiled workspace, no setup |
+
+Unplug a screen and komorebi keeps its windows and layout; plug it back in and they return.
 
 <a id="hotkeys"></a>
 
@@ -169,7 +181,7 @@ flowchart LR
 |---|---|
 | <kbd>Alt</kbd> <kbd>Ctrl</kbd> <kbd>T</kbd> | Always **float** windows like this one |
 | <kbd>Alt</kbd> <kbd>Ctrl</kbd> <kbd>I</kbd> | Always **ignore** windows like this one (popups, PiP, call bars) |
-| <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>B</kbd> | Restart the bar |
+| <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>B</kbd> | Restart the bars |
 | <kbd>Alt</kbd> <kbd>O</kbd> | Reload whkd |
 | <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>O</kbd> | Reload komorebi config |
 
@@ -218,7 +230,7 @@ To add a new config, add one line to the `$Configs` list at the top of `setup.ps
 > **Window rules** live in `komorebi/komorebi.my-rules.json`, loaded on top of the community `applications.json`. <kbd>Alt</kbd> <kbd>Ctrl</kbd> <kbd>T</kbd> / <kbd>I</kbd> add to it. If a window's title changes every time, edit its rule to `"matching_strategy": "Contains"`.
 
 > [!IMPORTANT]
-> **Monitor IDs** in `komorebi.*.json` (`display_index_preferences`) belong to this laptop's displays. On another machine, run `komorebic monitor-information` and update them.
+> **Screen IDs** in `komorebi.json` (`display_index_preferences`) belong to this laptop's screens. To pin a new everyday screen (or on another laptop), run `komorebic monitor-information`, add its `serial_number_id` (the `device_id` for a built-in panel) with a `workspaces` block in the same position, and copy a `komorebi.bar.monitorN.json` with the next index. In Windows **Settings → System → Display → Multiple displays**, turn off *Remember window locations* and turn on *Minimize windows when a monitor is disconnected*.
 
 > [!WARNING]
 > In `whkdrc`, don't put `# comments` at the end of a command line: `cmd` would pass them on as arguments.

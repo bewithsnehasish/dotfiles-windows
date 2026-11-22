@@ -18,7 +18,7 @@ alt + shift + escape    : start "" taskmgr.exe
 
 alt + q                 : komorebic close
 alt + m                 : komorebic minimize
-alt + shift + b         : pwsh -NoProfile -WindowStyle Hidden -Command "Get-Process komorebi-bar -EA 0 | Stop-Process -Force; 0..2 | ForEach-Object { Start-Process komorebi-bar -ArgumentList '--config', ($env:USERPROFILE + '\komorebi.bar.monitor' + $_ + '.json') -WindowStyle Hidden }"
+alt + shift + b         : taskkill /f /im komorebi-bar.exe >nul 2>&1 & pwsh -NoProfile -WindowStyle Hidden -File "{{HOME}}\komorebi-start.ps1" -BarsOnly
 
 # Teach komorebi about the focused window: float it from now on / leave it alone from now on
 alt + ctrl + t          : pwsh -NoProfile -WindowStyle Hidden -File "{{HOME}}\komorebi.learn.ps1" float

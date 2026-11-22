@@ -30,15 +30,6 @@
         "focused_container": {
           "enable": true,
           "display": "IconAndText"
-        },
-        "configuration_switcher": {
-          "enable": true,
-          "configurations": {
-            "1": "{{HOME_FWD}}/komorebi.1screen.json",
-            "H2": "{{HOME_FWD}}/komorebi.home2.json",
-            "O2": "{{HOME_FWD}}/komorebi.office2.json",
-            "O3": "{{HOME_FWD}}/komorebi.office3.json"
-          }
         }
       }
     }
@@ -103,5 +94,32 @@
     }
   },
   "height": 34,
-  "max_label_width": 150
+  "max_label_width": 250,
+  "center_widgets": [
+    {
+      "Applications": {
+        "enable": true,
+        "display": "Icon",
+        "items": [
+          {
+            "name": "WezTerm",
+            "command": "C:\\Program Files\\WezTerm\\wezterm-gui.exe"
+          },
+          {
+            "name": "Helium",
+            "command": "{{HOME_JSON}}\\scoop\\shims\\helium.exe",
+            "icon": "{{HOME_JSON}}\\.config\\komorebi-icons\\helium.png"
+          },
+          {
+            "name": "File Explorer",
+            "command": "C:\\Windows\\explorer.exe"
+          },
+          {
+            "name": "Slack",
+            "command": "{{HOME_JSON}}\\scoop\\apps\\slack\\current\\Slack.exe"
+          }
+        ]
+      }
+    }
+  ]
 }
