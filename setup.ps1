@@ -144,13 +144,19 @@ function Step-Komorebi {
         Write-Note 'community app rules updated   ~\applications.json'
     }
 
-    # komorebi's own startup shortcut starts komorebi, whkd, masir and the bars at login.
-    komorebic enable-autostart --whkd --bar --masir | Out-Null
+    # komorebi's own startup shortcut starts komorebi, whkd and the bars at login.
+    komorebic enable-autostart --whkd --bar | Out-Null
     Write-Note 'starts at login   shell:startup\komorebi.lnk'
+
+    # Windows' own hover-to-focus, without bringing the window to the front, so a floating window stays on top.
+    Add-Type -Namespace Win32 -Name Spi -MemberDefinition '[DllImport("user32.dll")] public static extern bool SystemParametersInfo(uint a, uint b, IntPtr c, uint d);'
+    [Win32.Spi]::SystemParametersInfo(0x1001, 0, [IntPtr]1, 3) | Out-Null
+    [Win32.Spi]::SystemParametersInfo(0x100D, 0, [IntPtr]0, 3) | Out-Null
+    Write-Note 'focus follows mouse (no raise) turned on'
 
     if (Get-Process komorebi -ErrorAction SilentlyContinue) { Write-Note 'komorebi already running' }
     else {
-        komorebic start --whkd --bar --masir | Out-Null
+        komorebic start --whkd --bar | Out-Null
         Write-Note 'komorebi started'
     }
 }
@@ -200,11 +206,11 @@ function Step-Cleanup {
 }
 
 $StepList = @(
-    @{ Name = 'Packages';    Info = 'scoop apps, PowerShell 7, WezTerm, Node, masir, PowerShell modules'; Run = { Step-Packages } }
+    @{ Name = 'Packages';    Info = 'scoop apps, PowerShell 7, WezTerm, Node, PowerShell modules'; Run = { Step-Packages } }
     @{ Name = 'Shell';       Info = 'PowerShell profile + starship prompt';                               Run = { Step-Shell } }
     @{ Name = 'WezTerm';     Info = 'terminal config';                                                    Run = { Step-WezTerm } }
     @{ Name = 'Neovim';      Info = "clone nvim-config ($NvimBranch branch)";                             Run = { Step-Neovim } }
-    @{ Name = 'komorebi';    Info = 'tiling + whkd hotkeys + masir + bar, started at login';              Run = { Step-Komorebi } }
+    @{ Name = 'komorebi';    Info = 'tiling + whkd hotkeys + bar + hover focus, started at login';              Run = { Step-Komorebi } }
     @{ Name = 'Herdr';       Info = 'agent workspace config';                                             Run = { Step-Herdr } }
     @{ Name = 'Claude Code'; Info = 'CLI, settings, status line, hooks';                                  Run = { Step-Claude } }
     @{ Name = 'Git + SSH';   Info = 'git config and SSH host aliases (keys are never in the repo)';       Run = { Step-Git } }

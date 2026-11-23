@@ -24,7 +24,7 @@
     <g font-size="15" font-weight="600" text-anchor="middle">
       <rect x="64"  y="236" width="96"  height="30" rx="15" fill="#313244"/><text x="112" y="256" fill="#cba6f7">komorebi</text>
       <rect x="170" y="236" width="64"  height="30" rx="15" fill="#313244"/><text x="202" y="256" fill="#89b4fa">whkd</text>
-      <rect x="244" y="236" width="72"  height="30" rx="15" fill="#313244"/><text x="280" y="256" fill="#94e2d5">masir</text>
+      <rect x="244" y="236" width="72"  height="30" rx="15" fill="#313244"/><text x="280" y="256" fill="#94e2d5">hover</text>
       <rect x="326" y="236" width="90"  height="30" rx="15" fill="#313244"/><text x="371" y="256" fill="#f5c2e7">WezTerm</text>
       <rect x="64"  y="276" width="128" height="30" rx="15" fill="#313244"/><text x="128" y="296" fill="#89dceb">PowerShell 7</text>
       <rect x="202" y="276" width="82"  height="30" rx="15" fill="#313244"/><text x="243" y="296" fill="#a6e3a1">Neovim</text>

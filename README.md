@@ -30,8 +30,8 @@
 <td width="50%">⌨️ <b>Instant hotkeys</b><br>whkd runs every hotkey through <code>cmd</code>: ~0.05 s per keypress instead of ~0.5 s</td>
 </tr>
 <tr>
-<td>🖱️ <b>Focus follows mouse</b><br>masir focuses the window under the cursor, but only windows komorebi manages</td>
-<td>🚀 <b>Starts at login</b><br>komorebi's own autostart runs komorebi, whkd, masir and the bars, no scripts</td>
+<td>🖱️ <b>Focus follows mouse</b><br>Windows' own hover-to-focus, without raising the window, so a floating window stays on top</td>
+<td>🚀 <b>Starts at login</b><br>komorebi's own autostart runs komorebi, whkd and the bars, no scripts</td>
 </tr>
 <tr>
 <td>🐚 <b>Shell</b><br>PowerShell 7 with starship, zoxide, fzf, eza, bat and git shortcuts</td>
@@ -61,11 +61,11 @@ You get a menu. Type the numbers you want (`1 3 5`), `a` for everything, or Ente
 ```text
 Windows setup - pick what to set up:
 
-   1) Packages     scoop apps, PowerShell 7, WezTerm, Node, masir, PowerShell modules
+   1) Packages     scoop apps, PowerShell 7, WezTerm, Node, PowerShell modules
    2) Shell        PowerShell profile + starship prompt
    3) WezTerm      terminal config
    4) Neovim       clone nvim-config (windows branch)
-   5) komorebi     tiling + whkd hotkeys + masir + bar, started at login
+   5) komorebi     tiling + whkd hotkeys + bar + hover focus, started at login
    6) Herdr        agent workspace config
    7) Claude Code  CLI, settings, status line, hooks
    8) Git + SSH    git config and SSH host aliases (keys are never in the repo)
@@ -83,11 +83,11 @@ Windows setup - pick what to set up:
 
 | # | Step | What it does |
 |:-:|------|--------------|
-| 1 | 📦 **Packages** | Installs scoop and every app in [`packages/scoopfile.json`](packages/scoopfile.json), the winget apps in [`packages/winget.txt`](packages/winget.txt) (PowerShell 7, WezTerm, Node 22, masir), and the PowerShell modules posh-git, Terminal-Icons and PSFzf |
+| 1 | 📦 **Packages** | Installs scoop and every app in [`packages/scoopfile.json`](packages/scoopfile.json), the winget apps in [`packages/winget.txt`](packages/winget.txt) (PowerShell 7, WezTerm, Node 22), and the PowerShell modules posh-git, Terminal-Icons and PSFzf |
 | 2 | 🐚 **Shell** | PowerShell 7 profile and the starship prompt |
 | 3 | 🖥️ **WezTerm** | `~\.wezterm.lua` |
 | 4 | 📝 **Neovim** | Clones [nvim-config](https://github.com/bewithsnehasish/nvim-config) (`windows` branch) into `%LOCALAPPDATA%\nvim` |
-| 5 | 🪟 **komorebi** | Layouts, bar, window rules, whkd hotkeys, masir, and autostart at login |
+| 5 | 🪟 **komorebi** | Layouts, bar, window rules, whkd hotkeys, hover focus, and autostart at login |
 | 6 | 🐑 **Herdr** | Herdr config |
 | 7 | 🤖 **Claude Code** | Installs the CLI, then settings, status line and hooks |
 | 8 | 🔑 **Git + SSH** | `.gitconfig` and SSH host aliases: `github.com` = work, `github-pr` = personal. Keys are never stored here |
@@ -110,14 +110,13 @@ flowchart LR
     fix --> done
 ```
 
-**At login**, komorebi's own startup shortcut runs `komorebic start --whkd --bar --masir`. There are no scripts. If you dock after logging in, press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>B</kbd> to give the new screen its bar:
+**At login**, komorebi's own startup shortcut runs `komorebic start --whkd --bar`. There are no scripts. If you dock after logging in, press <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>B</kbd> to give the new screen its bar:
 
 ```mermaid
 flowchart LR
     login(["🔓 Windows login"]) --> lnk["komorebi.lnk"] --> start["komorebic start"]
     start --> k["🪟 komorebi"]
     start --> w["⌨️ whkd"]
-    start --> m["🖱️ masir"]
     k --> bar["📊 the bars"]
     dock(["🔌 screen plugged in"]) -. "Alt Shift B" .-> bar
 ```
@@ -243,7 +242,7 @@ To add a new config, add one line to the `$Configs` list at the top of `setup.ps
 <details>
 <summary><b>komorebi isn't running after login</b></summary>
 
-Run `komorebic start --whkd --bar --masir`. If that works, check that `komorebi.lnk` exists in `shell:startup` (re-run step 5 to recreate it).
+Run `komorebic start --whkd --bar`. If that works, check that `komorebi.lnk` exists in `shell:startup` (re-run step 5 to recreate it).
 </details>
 
 <details>
