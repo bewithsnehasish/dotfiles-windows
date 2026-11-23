@@ -126,9 +126,9 @@ flowchart LR
 
 | Screen | Workspaces |
 |---|---|
-| 💻 Laptop panel | 6 – 9 when docked, **all 1 – 9 on its own** |
+| 💻 Laptop panel | 6 – 9 at home, 4 – 6 at the office, **all 1 – 9 on its own** |
 | 🏠 Home Lenovo L24 | 1 – 5 |
-| 🏢 Office Samsung #1 / #2 | 1 – 3 / 4 – 5 |
+| 🏢 Office Samsung left / right | 1 – 3 / 7 – 9 |
 | 📽️ Any other screen (projector, hotel TV) | one plain tiled workspace, no setup |
 
 The laptop is listed last, so when docked the bigger screen wins workspaces 1 – 5; undocked, the laptop's own 1 – 5 take over. Unplug a screen and komorebi keeps its layout; plug it back in and its windows return. Windows you opened on the laptop's 1 – 5 while undocked stay on the laptop after docking: click that workspace on the laptop's bar and send each window over with <kbd>Alt</kbd> <kbd>Shift</kbd> + its number.

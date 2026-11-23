@@ -50,8 +50,9 @@
     },
     {
       "workspaces": [
-        { "name": "4", "layout": "VerticalStack" },
-        { "name": "5", "layout": "VerticalStack" }
+        { "name": "7", "layout": "VerticalStack" },
+        { "name": "8", "layout": "VerticalStack" },
+        { "name": "9", "layout": "VerticalStack" }
       ]
     },
     {
